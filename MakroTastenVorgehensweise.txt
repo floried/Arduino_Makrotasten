@@ -1,4 +1,4 @@
-Vorgehensweise meines Programms für die "Tastaturerweiterung"
+Vorgehensweise meines Programms fÃ¼r die "Tastaturerweiterung"
 
 code zu finden in folgendem Tab:
 1	Multi-Makro-Stick
@@ -10,7 +10,7 @@ code zu finden in folgendem Tab:
 7	ledMatrixSetUp (not used, implemented in 1)
 X	not implemented so far
 y->z	in y funktion aufgerufen; in z definiert (void)
-#	FUNKTIONIERT ANSCHEINEN NICHT	FUNKTIONIERT ANSCHEINEN NICHT	FUNKTIONIERT ANSCHEINEN NICHT	FUNKTIONIERT ANSCHEINEN NICHT
+#	FUNKTIONIERT ANSCHEINEND NICHT	FUNKTIONIERT ANSCHEINEND NICHT	FUNKTIONIERT ANSCHEINEND NICHT	FUNKTIONIERT ANSCHEINEND NICHT
 
 
 
@@ -25,26 +25,26 @@ Loop()								1
 #		if D_On -> Keypress				.
 #		if D_Off-> Keypress				.
 	getButton()						1->2
-		Multiplexing der 4x4 Tasten			2	Rastert durch alle Reihen und Zeilen, setzt gegebenen Falls pressed auf true/false, setzt pressedButton auf den zuletzt gedrückten Button
+		Multiplexing der 4x4 Tasten			2	Rastert durch alle Reihen und Zeilen, setzt gegebenen Falls pressed auf true/false, setzt pressedButton auf den zuletzt gedrÃ¼ckten Button
 	setMode()						1->2
 		if pressed:					2
 		->if pressedButton = A/B/C/D:			.	aktualisiert bei pressed ist true den Mode
 		--> Mode = A/B/C/D				.
 	buttonMakros()						1->2
 		if Mode = 					2
-		A:						.	genutzt für Programmier-Makros wie hochladen, besuche Arduino.cc, öffne COM-Port
-			LedCoding()				2->4	führt die LED-Animation aus
-			JoystickMoveWindow()			2->6	überträgt JoystickBewegungen auf Win+Arrow_Key bzw. Alt+TAB
-			caseA()					2	führt falls pressed die jeweiligen Funktionen der 4x4 Tasten aus
+		A:						.	genutzt fÃ¼r Programmier-Makros wie hochladen, besuche Arduino.cc, Ã¶ffne COM-Port
+			LedCoding()				2->4	fÃ¼hrt die LED-Animation aus
+			JoystickMoveWindow()			2->6	Ã¼bertrÃ¤gt JoystickBewegungen auf Win+Arrow_Key bzw. Alt+TAB
+			caseA()					2	fÃ¼hrt falls pressed die jeweiligen Funktionen der 4x4 Tasten aus
 				if pressed:			.
 				Keypresses			.
 		B:						.
-			animateText()				2->4	fürt die LED-Animation aus
-			joysticknaigation()			2->6	überträgt JoystickBewegungen auf Strg+Arrow_Key bzw. Scroll...
-			caseB() (not in use)			X	angedacht für LaTeX-Makros wie \item, \section...
+			animateText()				2->4	fÃ¼rt die LED-Animation aus
+			joysticknaigation()			2->6	Ã¼bertrÃ¤gt JoystickBewegungen auf Strg+Arrow_Key bzw. Scroll...
+			caseB() (not in use)			X	angedacht fÃ¼r LaTeX-Makros wie \item, \section...
 		C:						2
-			musicLight()				2->4	führt dei LED-Animation aus
-			joystickMusic()				2->6	überträgt JoystickBewegungen auf Musiksteuerung. -> Hotkey+NUMPAD -> durch AutoHotKey verarbeitet
+			musicLight()				2->4	fÃ¼hrt dei LED-Animation aus
+			joystickMusic()				2->6	Ã¼bertrÃ¤gt JoystickBewegungen auf Musiksteuerung. -> Hotkey+NUMPAD -> durch AutoHotKey verarbeitet
 #			caseC()					2->5	[Soll Daten senden / Licht ein/Ausschalten via RC]
 #				if pressed:			5
 #				transmit(KeyNumber1-4)		.	ruft die transmit() auf
@@ -52,9 +52,9 @@ Loop()								1
 #					send Data		.	sendet die betreffenden Daten
 #					toggle "states"		.	"merkt sich, ob die Lampe an oder aus ist"
 		D:
-			TextLoop()				2->3	führt dei LED-Animation aus
-#			caseD() (not in use) 			X	[geplant: lässt den Modus für den Fußknopf einstellen, zB Strg+z oder Upload Sketch
+			TextLoop()				2->3	fÃ¼hrt dei LED-Animation aus
+#			caseD() (not in use) 			X	[geplant: lÃ¤sst den Modus fÃ¼r den FuÃŸknopf einstellen, zB Strg+z oder Upload Sketch
 		E:							nur nach Neustart
-			Smiley()				2->4	lässt "Hi" erscheinen
-			joystickMouse()				2->6	lässt den Joystick zur Maus werden
+			Smiley()				2->4	lÃ¤sst "Hi" erscheinen
+			joystickMouse()				2->6	lÃ¤sst den Joystick zur Maus werden
 				
