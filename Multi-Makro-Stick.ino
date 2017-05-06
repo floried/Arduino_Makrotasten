@@ -1,4 +1,3 @@
-#define KEY_NUMPAD_DIVIDE   0xDC
 #define KEY_NUMPAD_MULTIPLY 0xDD
 #define KEY_NUMPAD_MINUS    0xDE
 #define KEY_NUMPAD_PLUS     0xDF
@@ -20,6 +19,7 @@
 #include <Mouse.h>
 
 #include <RCSwitch.h>
+RCSwitch mySendSwitch = RCSwitch();
 RCSwitch mySwitch = RCSwitch();
 
 char Buttons[] = {'1', '2', '3', 'A', '4', '5', '6', 'B', '7', '8', '9', 'C', '*', '0', '#', 'D'};
@@ -107,7 +107,7 @@ void setup() {
   Mouse.begin();                  //Mouse functions
   pinMode(7, INPUT);
   mySwitch.enableReceive(4);      // Receiver on interrupt 4 => that is pin #7
-  mySwitch.enableTransmit(9);
+  mySendSwitch.enableTransmit(9);
 
   maxAll(max7219_reg_scanLimit, 0x07);   //Matrix setup
   maxAll(max7219_reg_decodeMode, 0x00);  // using an led matrix (not digits)

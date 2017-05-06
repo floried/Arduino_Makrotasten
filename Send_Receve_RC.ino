@@ -2,7 +2,7 @@ void recieve(){
   
     if (mySwitch.available()) {
       Serial.print("4.. ");
-    int value = mySwitch.getReceivedValue();
+    long value = mySwitch.getReceivedValue();
       Serial.println("6.. ");
     if (value == 0) {
       Serial.print("Unknown encoding");
@@ -42,34 +42,34 @@ void recieve(){
 
 
 void transmit(int data){
-//  mySwitch.disableReceive();
-//  mySwitch.enableTransmit(9);
+  mySwitch.disableReceive();
+  mySendSwitch.enableTransmit(9);
     switch(data){
       case(1):
-        mySwitch.switchOn("01001", "10000");
-        mySwitch.switchOn("01001", "01000");
+        mySendSwitch.switchOn("01001", "10000");
+        mySendSwitch.switchOn("01001", "01000");
         state1 = state2 = state3 = state4 = 1;
       break;
       case(2):
-        !state1? mySwitch.switchOn("01001", "10000"):mySwitch.switchOff("01001", "10000");
+        !state1? mySendSwitch.switchOn("01001", "10000"):mySendSwitch.switchOff("01001", "10000");
         state1 = !state1;
         nextpress = millis()+100;
       break;
       case(3):
-        !state2? mySwitch.switchOn("01001", "01000"):mySwitch.switchOff("01001", "01000");
+        !state2? mySendSwitch.switchOn("01001", "01000"):mySendSwitch.switchOff("01001", "01000");
         state2 = !state2;
         nextpress = millis()+100;
       break;
       case(4):
-        mySwitch.switchOff("01001", "10000");
-        mySwitch.switchOff("01001", "01000");
-        mySwitch.switchOff("01001", "00100");
-        mySwitch.switchOff("01001", "00010");
-        mySwitch.switchOff("01001", "00001");
+        mySendSwitch.switchOff("01001", "10000");
+        mySendSwitch.switchOff("01001", "01000");
+        mySendSwitch.switchOff("01001", "00100");
+        mySendSwitch.switchOff("01001", "00010");
+        mySendSwitch.switchOff("01001", "00001");
         state1 = state2 = state3 = state4 = 0;
       break;
     }
-//  mySwitch.disableTransmit();
-//  mySwitch.enableReceive(4);
+  mySendSwitch.disableTransmit();
+  mySendSwitch.enableReceive(4);
 }
 
